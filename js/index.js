@@ -4,6 +4,7 @@ $(function () {
     speed: 8000,
     gap: 60,
     direction: 'left',
-    //delayBeforeStart: 2000
+    duplicated: true,
+    delayBeforeStart: 0,
 });
 });
