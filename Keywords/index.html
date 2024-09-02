@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>動物保護法及相關規定函釋資料庫線上查詢系統</title>    
+    <link href="/css/main.css" rel="stylesheet" />
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/dataTables.bootstrap4.css" rel="stylesheet" />
+
+    <script src="/Scripts/bootstrap.bundle.js"></script>
+    <script src="/Scripts/jquery-3.7.1.js"></script>
+    <script src="/Scripts/jquery.marquee.js"></script>
+
+
+    <script src="/Scripts/jquery.dataTables.js"></script>
+    <script src="/Scripts/dataTable.js"></script>
+    <script src="/Scripts/dataTables.bootstrap4.min.js"></script>
+
+    <script src="/js/index.js"></script>
+    <style>
+    </style>
+    <script>
+        $(function () {
+                let isMobileDevice = false;
+                isMobileDevice = /Android|iPhone|iPad/i.test(navigator.userAgent);
+                console.log('isMobile? ', isMobileDevice);
+
+                if (!isMobileDevice) {
+                    $('.nav-item').hover(
+                        function () {
+                            $(this).children('.dropdown-menu').addClass('show');
+                            $(this).addClass('nav_item_active');
+                            // console.log('hover in');
+                        },
+                        function () {
+                            $(this).children('.dropdown-menu').removeClass('show');
+                            $(this).removeClass('nav_item_active');
+                            // console.log('hover out');
+                        }
+                    );
+                }
+            })
+    </script>
+    <noscript>
+      您的瀏覽器不支援JavaScript功能，若網頁功能無法正常使用時，請開啟瀏覽器JavaScript狀態
+  </noscript>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-success bg-gradient" style="--bs-success-rgb: 50,155,125;">
+        <div class="container-fluid justify-content-end">
+            <!-- navigator 漢堡選單按鈕 -->
+            <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-flex align-items-center justify-content-center"
+                id="navbarSupportedContent">
+                <ul class="nav mb-2 mb-lg-0">
+                    <li class="nav-item ms-3">
+                        <a class="nav-link text-white fw-bold"
+                            href="#">回首頁
+                        </a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a class="nav-link text-white fw-bold"
+                            href="#">法規範
+                        </a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a class="nav-link text-white fw-bold"
+                            href="#">案例
+                        </a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a class="nav-link text-white fw-bold"
+                            href="#">課程
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-white fw-bold dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">相關連結</a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="https://animal.moa.gov.tw/" target="_blank">動物保護資訊網</a></li>
+                          <li><a class="dropdown-item" href="https://www.pet.gov.tw/AnimalApp/AnnounceMent_Announce.aspx" target="_blank">全國動物收容管理系統</a></li>
+                        </ul>
+                      </li>
+                </ul>
+                <!-- 搜尋區 -->
+                <!-- <div class="d-flex">
+                    <asp:Label runat="server" ID="lblLoginName" CssClass="d-flex nav-link text-white text-lg-center fw-bolder align-items-center me-md-3" Visible="False"></asp:Label>
+                    <div id="search_btn">
+                        <button class="btn btn-success"
+                            type="button">
+                            <i class="bi bi-search"></i>
+                            <i class="bi bi-arrow-down-short"></i>
+                            <i class="bi bi-arrow-up-short"
+                                style="display: none;"></i>
+                        </button>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </nav> 
+</header>
+    <section>
+    <div class="container-fluid bg-white">
+      <div class="mt-md-3 accordion-body">
+        <h1 class="text-center">
+          
+        </h1>
+      </div>
+    </div>
+  </section>
+  <footer class="bg-black bg-opacity-50 position-fixed bottom-0 w-100">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <p class="text-white">
+            隱私權保護政策 ｜ 網站安全政策 ｜ 網站資料開放宣告</p>
+        </div>
+       </div>
+       <div class="row">
+        <div class="col-md-4">
+          <p class="text-white">
+            版權所有： ｜ 地址 : ｜ 機關電話:
+          </p>
+        </div>
+       </div>
+       <div class="row">
+        <div class="col-md-4">
+          <p class="text-white">
+            更新日期：2024/08/30 ｜ 總瀏覽人數：
+          </p>
+        </div>
+       </div>
+    </div> 
+  </footer>
+  </body>
+
+</html>
