@@ -17,11 +17,52 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  font-family: "微軟正黑體", "Microsoft JhengHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+
+a[accesskey] {
+  position: absolute;
+  color: #ccc;
+  top: 0px;
+  left: 20px;
+  text-decoration: none;
+}
+
+.must:before {
+  content: '*';
+  color: #ca3c3c;
+  font-weight: bold;
+}
+
+a:focus,
+input:focus,
+select:focus,
+button:focus,
+textarea:focus {
+    outline: 3px dashed #f00 !important;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* 跑馬燈 */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
 }

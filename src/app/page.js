@@ -1,101 +1,100 @@
 import Image from "next/image";
+import NewsTable from "../components/NewsTable";
+import React, { useMemo } from "react";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const columns = useMemo(
+    () => [
+      { Header: "標題", accessor: "title" },
+      { Header: "內容", accessor: "content" },
+    ],
+    []
+  );
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const data = useMemo(
+    () => [
+      {
+        title: "動保法規網上線公告",
+        content: "請使用上方查詢功能查詢相關動保法規",
+      },
+      {
+        title: "動保法規網上線公告2",
+        content: "請使用上方查詢功能查詢相關動保法規",
+      },
+    ],
+    []
+  );
+
+  return (
+    <section>
+      <div className="bg-white">
+        <div className="mt-3">
+          <h1 className="text-center text-2xl font-bold">
+            動物保護法及相關規定函釋資料庫線上查詢系統
+          </h1>
+          <div className="flex flex-row mt-4">
+            <div id="marquee" className="marquee bg-white border-0 w-full">
+              <div className="marquee-content">
+                <a
+                  className="mr-6 text-lg"
+                  href="https://udn.com/news/story/7470/8149945"
+                >
+                  家貓登記 動保、獸醫意見分歧
+                </a>
+                <a
+                  className="mr-6"
+                  href="https://udn.com/news/story/7470/8148909"
+                >
+                  動保團體要求全面禁山豬吊 林保署：迫使金屬套索地下化不利保育
+                </a>
+                <a
+                  className="mr-6"
+                  href="https://udn.com/news/story/7470/8149945"
+                >
+                  家貓登記 動保、獸醫意見分歧
+                </a>
+                <a
+                  className="mr-6"
+                  href="https://udn.com/news/story/7470/8148909"
+                >
+                  動保團體要求全面禁山豬吊 林保署：迫使金屬套索地下化不利保育
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4 pt-4">
+            <div className="flex-shrink-0 w-full md:w-1/4 ">
+              <button
+                type="button"
+                className="w-full text-lg bg-blue-500 text-white py-3 font-bold hover:bg-blue-600 rounded-lg"
+                // onClick={() => (location.href = "Keywords/index.html")}
+              >
+                關鍵字查詢
+              </button>
+            </div>
+            <div className="flex-shrink-0 w-full md:w-1/4 ">
+              <button
+                type="button"
+                className="w-full text-lg bg-green-500 text-white py-3 font-bold hover:bg-green-600 rounded-lg"
+              >
+                案例查詢
+              </button>
+            </div>
+            <div className="flex-shrink-0 w-full md:w-1/4 ">
+              <button
+                type="button"
+                className="w-full text-lg bg-teal-600 text-white py-3 font-bold hover:bg-blue-500 rounded-lg"
+              >
+                課程查詢
+              </button>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className="p-4">
+          <h1 className="text-xl font-semibold mb-4">最新消息</h1>
+          <NewsTable columns={columns} data={data} />
+        </div>
+      </div>
+    </section>
   );
 }
