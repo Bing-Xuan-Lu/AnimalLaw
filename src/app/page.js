@@ -14,10 +14,12 @@ export default function Home() {
   const data = useMemo(
     () => [
       {
+        id: 1,
         title: "動保法規網上線公告",
         content: "請使用上方查詢功能查詢相關動保法規",
       },
       {
+        id: 2,
         title: "動保法規網上線公告2",
         content: "請使用上方查詢功能查詢相關動保法規",
       },

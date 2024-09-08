@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useTable, useSortBy } from 'react-table';
 import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/24/solid';
 
@@ -24,9 +24,14 @@ const NewsTable = ({ columns, data }) => {
       <table {...getTableProps()} className="min-w-full bg-white border border-gray-200 shadow-md rounded-lg">
         <thead>
           {headerGroups.map(headerGroup => (
-            <tr {...headerGroup.getHeaderGroupProps()} className="bg-gray-100 text-left">
+            <tr
+              key={headerGroup.id} // 確保唯一的 key
+              {...headerGroup.getHeaderGroupProps()}
+              className="bg-gray-100 text-left"
+            >
               {headerGroup.headers.map(column => (
                 <th
+                  key={column.id} // 確保唯一的 key
                   {...column.getHeaderProps(column.getSortByToggleProps())}
                   className="border px-4 py-2 cursor-pointer hover:bg-gray-200"
                 >
@@ -53,9 +58,17 @@ const NewsTable = ({ columns, data }) => {
           {rows.map(row => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()} className="even:bg-gray-50">
+              <tr
+                key={row.original.id} // 使用唯一的 id 作為 key
+                {...row.getRowProps()}
+                className="even:bg-gray-50"
+              >
                 {row.cells.map(cell => (
-                  <td {...cell.getCellProps()} className="border px-4 py-2">
+                  <td
+                    key={cell.column.id} // 使用唯一的 id 作為 key
+                    {...cell.getCellProps()}
+                    className="border px-4 py-2"
+                  >
                     {cell.render('Cell')}
                   </td>
                 ))}
