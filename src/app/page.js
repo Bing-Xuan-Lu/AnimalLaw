@@ -1,6 +1,7 @@
 import Image from "next/image";
 import NewsTable from "../components/NewsTable";
 import React, { useMemo } from "react";
+import Link from "next/link";
 
 export default function Home() {
   const columns = useMemo(
@@ -69,12 +70,14 @@ export default function Home() {
           </div>
           <div className="flex flex-wrap justify-center gap-4 pt-4">
             <div className="flex-shrink-0 w-full md:w-1/4">
-              <button
-                type="button"
-                className="w-full text-lg bg-blue-500 text-white py-3 font-bold hover:bg-blue-600 rounded-lg"
-              >
-                關鍵字查詢
-              </button>
+              <Link href="/keywords">
+                  <button
+                    type="button"
+                    className="w-full text-lg bg-blue-500 text-white py-3 font-bold hover:bg-blue-600 rounded-lg"
+                  >
+                    關鍵字查詢
+                  </button>
+              </Link>
             </div>
             <div className="flex-shrink-0 w-full md:w-1/4">
               <button
