@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import NewsTable from "../components/NewsTable";
 import React, { useMemo } from "react";
 import Link from "next/link";
+import { Button } from "@material-tailwind/react";
 
 export default function Home() {
   const columns = useMemo(
@@ -71,29 +74,20 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-4 pt-4">
             <div className="flex-shrink-0 w-full md:w-1/4">
               <Link href="/keywords">
-                  <button
-                    type="button"
-                    className="w-full text-lg bg-blue-500 text-white py-3 font-bold hover:bg-blue-600 rounded-lg"
-                  >
-                    關鍵字查詢
-                  </button>
+                <Button className="w-full text-lg bg-blue-500 text-white py-3 font-bold hover:bg-blue-600 rounded-lg">
+                  關鍵字查詢
+                </Button>
               </Link>
             </div>
             <div className="flex-shrink-0 w-full md:w-1/4">
-              <button
-                type="button"
-                className="w-full text-lg bg-green-500 text-white py-3 font-bold hover:bg-green-600 rounded-lg"
-              >
+              <Button className="w-full text-lg bg-green-500 text-white py-3 font-bold hover:bg-green-600 rounded-lg">
                 案例查詢
-              </button>
+              </Button>
             </div>
             <div className="flex-shrink-0 w-full md:w-1/4">
-              <button
-                type="button"
-                className="w-full text-lg bg-teal-600 text-white py-3 font-bold hover:bg-blue-500 rounded-lg"
-              >
+              <Button className="w-full text-lg bg-teal-600 text-white py-3 font-bold hover:bg-blue-500 rounded-lg">
                 課程查詢
-              </button>
+              </Button>
             </div>
           </div>
         </div>
