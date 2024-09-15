@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
-import Navbar from "@/components/Navbar";
+import LawNavbar from "@/components/LawNavbar";
 import {
   Collapse,
   Button,
@@ -24,7 +24,7 @@ export default function Home() {
     }
   };
 
-  const renderContent = () => {
+  function renderContent() {
     switch (index) {
       case 1:
         return (
@@ -92,26 +92,43 @@ export default function Home() {
       default:
         return <Typography variant="h6">未選擇法規</Typography>;
     }
-  };
-
+  }
+  function handleSearch(e) {
+    e.preventDefault();
+    console.log("Search triggered");
+  }
   return (
     <section className="min-h-screen bg-white dark:bg-gray-800">
       <div className="bg-white dark:bg-gray-800">
-        <Navbar />
-        <div className="flex flex-col items-center mt-10 w-full">
+        <LawNavbar />
+
+        <div className="flex flex-col items-center mt-10">
           {/* 搜尋框區域 */}
-          <div className="flex items-center space-x-3 w-full max-w-screen-md">
-            <input
-              type="text"
-              className="w-full py-3 pl-4 pr-10 text-lg border border-gray-300 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-              placeholder="法規關鍵字搜尋"
-            />
-            <button className="flex items-center p-5">
-              <FiSearch className="w-5 h-5 text-gray-500 hover:text-gray-700" />
-            </button>
-          </div>
+
+          <form onSubmit={handleSearch} className="flex w-3/4 gap-4">
+            <div
+              className="flex items-center space-x-3 w-full max-w-screen-lg border border-gray-300
+         rounded-md shadow-md"
+            >
+              <input
+                type="text"
+                className="w-full py-3 pl-4 pr-10 text-lg"
+                placeholder="法規關鍵字搜尋"
+                aria-label="Search"
+              />
+              <button type="submit" className="flex items-center p-5">
+                <FiSearch className="w-5 h-5 text-gray-500 hover:text-gray-700" />
+              </button>
+            </div>
+            <Button
+              className="w-1/4 text-lg bg-teal-600 text-white py-3 font-bold hover:bg-blue-500 rounded-lg"
+            >
+              進階查詢
+            </Button>
+          </form>
+
           {/* 按鈕區域 */}
-          <div className="grid grid-cols-3 gap-3 mt-10 w-full max-w-screen-md">
+          <div className="grid grid-cols-3 gap-3 mt-10 w-full max-w-screen-lg">
             <div className="flex flex-col items-center space-y-3">
               <p className="text-center">法規範</p>
               <Button

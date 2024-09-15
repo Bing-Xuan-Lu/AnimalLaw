@@ -80,9 +80,11 @@ export default function Home() {
               </Link>
             </div>
             <div className="flex-shrink-0 w-full md:w-1/4">
+            <Link href="/cases">
               <Button className="w-full text-lg bg-green-500 text-white py-3 font-bold hover:bg-green-600 rounded-lg">
                 案例查詢
               </Button>
+              </Link>
             </div>
             <div className="flex-shrink-0 w-full md:w-1/4">
               <Button className="w-full text-lg bg-teal-600 text-white py-3 font-bold hover:bg-blue-500 rounded-lg">
