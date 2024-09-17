@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
+import Link from "next/link";
 import LawNavbar from "@/components/LawNavbar";
 import {
   Collapse,
@@ -9,6 +10,7 @@ import {
   Card,
   Typography,
   CardBody,
+  Tooltip,
 } from "@material-tailwind/react";
 
 export default function Home() {
@@ -116,15 +118,17 @@ export default function Home() {
                 placeholder="法規關鍵字搜尋"
                 aria-label="Search"
               />
-              <button type="submit" className="flex items-center p-5">
-                <FiSearch className="w-5 h-5 text-gray-500 hover:text-gray-700" />
-              </button>
+              <Tooltip content="一般查詢" placement="bottom-end" className="ml-3">
+                <button type="submit" className="flex items-center p-5">
+                  <FiSearch className="w-5 h-5 text-gray-500 hover:text-gray-700" />
+                </button>
+              </Tooltip>
             </div>
-            <Button
-              className="w-1/4 text-lg bg-teal-600 text-white py-3 font-bold hover:bg-blue-500 rounded-lg"
-            >
-              進階查詢
-            </Button>
+            <Link href="../advsearch">
+              <Button className="w-full text-lg bg-teal-600 text-white py-6 px-12 font-bold hover:bg-blue-500 rounded-lg">
+                進階查詢
+              </Button>
+            </Link>
           </form>
 
           {/* 按鈕區域 */}
