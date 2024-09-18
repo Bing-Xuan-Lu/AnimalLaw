@@ -34,8 +34,8 @@ export default function Home() {
   return (
     <section className="min-h-screen bg-white dark:bg-white-100">
       <div className="bg-white dark:bg-gray-800">
-        <div className="mt-3">
-          <h1 className="text-center text-2xl font-bold text-gray-900 dark:text-white">
+        <div>
+          <h1 className="text-center text-2xl font-bold text-gray-900 dark:text-white pt-3">
             動物保護法及相關規定函釋資料庫線上查詢系統
           </h1>
           <div className="flex flex-row mt-4">

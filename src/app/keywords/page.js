@@ -134,7 +134,7 @@ export default function Home() {
           {/* 按鈕區域 */}
           <div className="grid grid-cols-3 gap-3 mt-10 w-full max-w-screen-lg">
             <div className="flex flex-col items-center space-y-3">
-              <p className="text-center">法規範</p>
+              <p className="text-center text-black">法規範</p>
               <Button
                 onClick={() => toggleOpen(1)}
                 color="red"
@@ -144,7 +144,7 @@ export default function Home() {
               </Button>
             </div>
             <div className="flex flex-col items-center space-y-3">
-              <p className="text-center">案例</p>
+              <p className="text-center text-black">案例</p>
               <Button
                 onClick={() => toggleOpen(2)}
                 color="orange"
@@ -154,7 +154,7 @@ export default function Home() {
               </Button>
             </div>
             <div className="flex flex-col items-center space-y-3">
-              <p className="text-center">課程</p>
+              <p className="text-center text-black">課程</p>
               <Button
                 onClick={() => toggleOpen(3)}
                 color="green"

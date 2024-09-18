@@ -39,7 +39,7 @@ const NewsTable = ({ columns, data }) => {
                     <th
                       key={column.id}
                       {...restHeaderProps}
-                      className="border px-4 py-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 dark:border-gray-600 text-gray-900 dark:text-gray-300"
+                      className="border px-4 py-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 dark:border-gray-600 text-gray-900"
                     >
                       <div className="flex items-center justify-between">
                         {column.render("Header")}
@@ -70,7 +70,7 @@ const NewsTable = ({ columns, data }) => {
               <tr
                 key={key}
                 {...restRowProps}
-                className="even:bg-gray-50 dark:even:bg-gray-700" // 修改深色模式下的背景色
+                className="even:bg-gray-50 dark:even:bg-black-700" // 深色模式下的背景色
               >
                 {row.cells.map((cell) => {
                   const { key, ...restCellProps } = cell.getCellProps();
@@ -78,9 +78,9 @@ const NewsTable = ({ columns, data }) => {
                     <td
                       key={key}
                       {...restCellProps}
-                      className="border px-4 py-2"
+                      className="border px-4 py-2 dark:even:bg-black-700"
                     >
-                      {cell.render("Cell")}
+                      <p className="text-black">{cell.render("Cell")}</p>
                     </td>
                   );
                 })}
