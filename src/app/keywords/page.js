@@ -107,7 +107,7 @@ export default function Home() {
         <div className="flex flex-col items-center mt-10">
           {/* 搜尋框區域 */}
 
-          <form onSubmit={handleSearch} className="flex w-3/4 gap-4">
+          <form onSubmit={handleSearch} className="flex md:w-3/4 gap-4 md:flex-row flex-col justify-center">
             <div
               className="flex items-center space-x-3 w-full max-w-screen-lg border border-gray-300
          rounded-md shadow-md"
