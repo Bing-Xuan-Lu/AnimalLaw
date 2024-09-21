@@ -43,21 +43,22 @@ export default function Home() {
   }, []);
 
   function TransitionComponent(props) {
-    if (!mounted) {
-      // 在未 mount 時，返回原始的 Collapse 元件避免 SSR 問題
-      return <Collapse {...props} />;
-    }
     const style = useSpring({
-      to: {
-        opacity: props.in ? 1 : 0,
-        transform: `translate3d(${props.in ? 0 : 20}px,0,0)`,
-      },
+      to: mounted
+        ? {
+            opacity: props.in ? 1 : 0,
+            transform: `translate3d(${props.in ? 0 : 20}px,0,0)`,
+          }
+        : { opacity: 1, transform: "translate3d(0px, 0, 0)" }
     });
 
-    return (
+    // 根據 mounted 來決定返回內容
+    return mounted ? (
       <animated.div style={style}>
         <Collapse {...props} />
       </animated.div>
+    ) : (
+      <Collapse {...props} />
     );
   }
 
