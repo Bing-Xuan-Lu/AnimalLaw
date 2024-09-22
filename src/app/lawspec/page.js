@@ -41,7 +41,7 @@ export default function Home() {
         });
       }, 100);
     }
-  }, [areItemsExpanded]);
+  }, [areItemsExpanded,apiRef]);
 
   const handleExpandClick = (event) => {
     const itemIds = ["1", "2", "3", "4"];
@@ -91,6 +91,7 @@ export default function Home() {
       ref={ref}
     />
   ));
+  CustomTreeItem.displayName = 'CustomTreeItem';
 
   const StyledTreeItem = styled(TreeItem)(({ theme }) => ({
     color: theme.palette.grey[800],
