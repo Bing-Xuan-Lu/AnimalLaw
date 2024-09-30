@@ -12,6 +12,7 @@ import {
   CardBody,
   Tooltip,
 } from "@material-tailwind/react";
+import { BiSolidDetail } from "react-icons/bi";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
@@ -26,25 +27,24 @@ export default function Home() {
     }
   };
 
-  const TABLE_HEAD = ["序號", "年度", "地區", "案由","判決"];
+  const TABLE_HEAD = ["序號", "年度", "地區", "案由", "判決", "詳細資料"];
 
   const TABLE_ROWS = [
     {
-      序號: "一",
-      年度: "107年",
-      地區: "臺南",
-      案由: "被告將摻入農藥的魚肉毒餌，放在農地，引誘犬隻食用，致三隻流浪犬誤食而中毒死亡。",
-      判決: "處拘役30天，併科罰 金10萬",
+      id: "一",
+      year: "107年",
+      region: "臺南",
+      case: "被告將摻入農藥的魚肉毒餌，放在農地，引誘犬隻食用，致三隻流浪犬誤食而中毒死亡。",
+      verdict: "處拘役30天，併科罰 金10萬",
     },
     {
-      序號: "二",
-      年度: "106年",
-      地區: "花蓮",
-      案由: "被告不滿鄰居飼養的寵物，到她家廚餘桶翻找撿食，將家中弄亂並隨地便溺，在一年內，接續在家中廚餘桶內添加農藥「加保扶」（臺語俗稱：好年冬），致犬隻9 隻及貓1 隻，分別因吃到廚餘桶內含農藥的食物中毒死亡。",
-      判決: "處有期徒刑2月得易科罰金",
+      id: "二",
+      year: "106年",
+      region: "花蓮",
+      case: "被告不滿鄰居飼養的寵物，到她家廚餘桶翻找撿食，將家中弄亂並隨地便溺，在一年內，接續在家中廚餘桶內添加農藥「加保扶」（臺語俗稱：好年冬），致犬隻9 隻及貓1 隻，分別因吃到廚餘桶內含農藥的食物中毒死亡。",
+      verdict: "處有期徒刑2月得易科罰金",
     },
   ];
-
 
   function TableWithHoverState() {
     return (
@@ -53,7 +53,7 @@ export default function Home() {
           <thead>
             <tr>
               {TABLE_HEAD.map((head) => (
-                <th key={head} className="border-b border-gray-300 pb-4 pt-10">
+                <th key={head} className="border-b border-gray-300 pb-4 pt-10 text-center">
                   <Typography
                     variant="small"
                     color="blue-gray"
@@ -66,63 +66,78 @@ export default function Home() {
             </tr>
           </thead>
           <tbody>
-            {TABLE_ROWS.map(({ 序號, 年度, 地區, 案由,判決 }, index) => {
-              const isLast = index === TABLE_ROWS.length - 1;
-              const classes = isLast ? "py-4" : "py-4 border-b border-gray-300";
-   
-              return (
-                <tr key={序號} className="hover:bg-gray-50">
-                  <td className={classes + " w-5"}>
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-bold"
+            {TABLE_ROWS.map(
+              ({ id, year, region, case: caseDesc, verdict }, index) => {
+                const isLast = index === TABLE_ROWS.length - 1;
+                const classes = isLast
+                  ? "py-4 text-center"
+                  : "py-4 text-center border-b border-gray-300";
+
+                return (
+                  <tr key={id} className="hover:bg-gray-50">
+                    <td className={classes + " w-5"}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-bold"
+                      >
+                        {id}
+                      </Typography>
+                    </td>
+                    <td className={classes + " w-5"}>
+                      <Typography
+                        variant="small"
+                        className="font-bold text-gray-600"
+                      >
+                        {year}
+                      </Typography>
+                    </td>
+                    <td className={classes + " w-10"}>
+                      <Typography
+                        variant="small"
+                        className="font-bold text-gray-600"
+                      >
+                        {region}
+                      </Typography>
+                    </td>
+                    <td className={classes + " w-36 px-5"}>
+                      <Typography
+                        variant="small"
+                        className="font-bold text-gray-600 text-wrap leading-relaxed"
+                      >
+                        {caseDesc}
+                      </Typography>
+                    </td>
+                    <td className={classes + " w-10"}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-bold"
+                      >
+                        {verdict}
+                      </Typography>
+                    </td>
+                    <td
+                      className={
+                        classes + " w-10 mx-3"
+                      }
                     >
-                      {序號}
-                    </Typography>
-                  </td>
-                  <td className={classes + " w-5"}>
-                    <Typography
-                      variant="small"
-                      className="font-bold text-gray-600"
-                    >
-                      {年度}
-                    </Typography>
-                  </td>
-                  <td className={classes + " w-10"}>
-                    <Typography
-                      variant="small"
-                      className="font-bold text-gray-600"
-                    >
-                      {地區}
-                    </Typography>
-                  </td>
-                  <td className={classes + " w-36"}>
-                    <Typography
-                      variant="small"
-                      className="font-bold text-gray-600 text-wrap"
-                    >
-                      {案由}
-                    </Typography>
-                  </td>
-                  <td className={classes + " w-10"}>
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-bold"
-                    >
-                      {判決}
-                    </Typography>
-                  </td>
-                </tr>
-              );
-            })}
+                      <Typography
+                        color="blue-gray"
+                        className="flex justify-center"
+                      >
+                        <BiSolidDetail className="text-3xl font-bold" />
+                      </Typography>
+                    </td>
+                  </tr>
+                );
+              }
+            )}
           </tbody>
         </table>
       </Card>
     );
   }
-
 
   function renderContent() {
     switch (index) {
