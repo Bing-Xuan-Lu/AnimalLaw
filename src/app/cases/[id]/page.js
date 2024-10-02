@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import { FiSearch } from "react-icons/fi";
+import React,{ useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation"; // 使用 next/navigation
+import { useParams } from "next/navigation"; // 獲取 URL 中的參數
+
 import LawNavbar from "@/components/LawNavbar";
 import {
   Button,
@@ -12,10 +14,6 @@ import {
   CardBody,
   CardFooter,
   Tooltip,
-  List,
-  ListItem,
-  ListItemText,
-  Input,
 } from "@material-tailwind/react";
 
 import Box from "@mui/material/Box";
@@ -27,11 +25,17 @@ import { useSpring, animated } from "@react-spring/web";
 import { SimpleTreeView, TreeItem } from "@mui/x-tree-view";
 import { useTreeViewApiRef } from "@mui/x-tree-view/hooks";
 
-export default function Home() {
-  function handleSearch(e) {
-    e.preventDefault();
-    console.log("Search triggered");
-  }
+// export const dynamicParams = false;
+
+
+// export function generateStaticParams() {
+// return [{ id: '1' }, { id: '2' }, { id: '3' }];
+// }
+
+export default function Detail() {
+  const router = useRouter();
+  const params = useParams();
+  const { id } = params; // 從 URL 中取得參數
 
   const [areItemsExpanded, setAreItemsExpanded] = useState(false);
   const apiRef = useTreeViewApiRef();
@@ -170,87 +174,10 @@ export default function Home() {
     },
   }));
 
-  //搜尋框
-  const [searchTerm, setSearchTerm] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(null);
-
-  const options = [
-    "動物保護法",
-    "其他",
-  ];
-
-  const filteredOptions = options.filter((option) =>
-    option.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const handleFocus = () => {
-    setIsOpen(true);
-  };
-
-  const handleBlur = () => {
-    // 延迟关闭列表
-    setTimeout(() => {
-      setIsOpen(false);
-    }, 100);
-  };
-
-  const handleSelect = (value) => {
-    setSelectedValue(value);
-    setSearchTerm(value);
-    setIsOpen(false);
-  };
-
-  const handleInputChange = (e) => {
-    const value = e.target.value;
-    setSearchTerm(value);
-    setIsOpen(value !== "");
-    inputRef.current.focus();
-  };
-
-  const inputRef = useRef(null);
-
   return (
     <section className="min-h-screen bg-white dark:bg-white-100">
       <div className="bg-white dark:bg-gray-800">
         <LawNavbar />
-        <div className="flex flex-col items-center mt-10">
-          {/* 搜尋框區域 */}
-          <div className="flex w-3/4 flex-col items-start max-w-screen-lg relative">
-            <Input
-              type="text"
-              value={searchTerm}
-              onChange={handleInputChange}
-              ref={inputRef}
-              label="法規關鍵字搜尋"
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-              className="py-5 pl-4 pr-10 text-lg border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            {isOpen && filteredOptions.length > 0 && (
-              <List className="absolute mt-12 z-10 w-full bg-white border border-gray-300 rounded-md shadow-lg">
-                {filteredOptions.map((option) => (
-                  <ListItem
-                    key={option}
-                    onClick={() => handleSelect(option)}
-                    className="hover:bg-gray-100 cursor-pointer"
-                  >
-                    {option}
-                  </ListItem>
-                ))}
-              </List>
-            )}
-          </div>
-        </div>
-        {/* <Tooltip
-                content="一般查詢"
-                placement="bottom-end"
-                className="ml-3"
-              >
-                <button type="submit" className="flex items-center p-5">
-                  <FiSearch className="w-5 h-5 text-gray-500 hover:text-gray-700" />
-                </button>
-              </Tooltip> */}
         {/* 將 RichTreeView 直接放在這裡，不用額外的 flex 佈局 */}
         <div className="mt-4 ms-28">
           <div>
@@ -267,83 +194,77 @@ export default function Home() {
               apiRef={apiRef}
               defaultExpandedItems={["1"]}
             >
-              <CustomTreeItem itemId="1" label="第一章 總則" className="root">
+              <CustomTreeItem itemId="1" label="113年" className="root">
                 <CustomTreeItem
                   itemId="2"
                   label={
                     <div>
-                      <Typography variant="h6">第一條</Typography>
-                      <Typography variant="h6">
-                        1.為尊重動物生命、及保護動物、增進動物福利，特制定本法
-                      </Typography>
-                      <Typography variant="h6">
-                        2.動物之保護，依本法之規定。但其他法律有特別之規定者，適用其他法律之規定。
-                      </Typography>
+                      <Typography variant="h6">台中</Typography>
                     </div>
                   }
                 >
-                  <CustomTreeItem itemId="3" label="函釋">
+                  <CustomTreeItem itemId="3" label="毒殺">
                     <CustomTreeItem
                       itemId="4"
                       label={
-                        <Card className="w-full flex flex-wrap items-start p-0 m-0">
+                        <Card className="w-2/3 flex flex-wrap items-start p-0 m-0">
                           <CardBody>
                             <Typography
                               variant="h5"
                               color="blue-gray"
                               className="mb-2"
                             >
-                              發文單位
+                              裁判字號
                             </Typography>
                             <Typography className="mb-4" variant="h6">
-                              法務部
+                              臺灣臺中地方法院 112 年度易字第 3078 號刑事裁定
                             </Typography>
                             <Typography
                               variant="h5"
                               color="blue-gray"
                               className="mb-2"
                             >
-                              發文字號
+                              裁判日期
                             </Typography>
                             <Typography className="mb-4" variant="h6">
-                              法律字第10403516600號
+                            民國 113 年 07 月 26 日
                             </Typography>
                             <Typography
                               variant="h5"
                               color="blue-gray"
                               className="mb-2"
                             >
-                              發文日期
+                              裁判案由
                             </Typography>
                             <Typography className="mb-4" variant="h6">
-                              民國104年12月30日
+                            違反動物保護法等
                             </Typography>
                             <Typography
                               variant="h5"
                               color="blue-gray"
                               className="mb-2"
                             >
-                              相關法條
+                              犯罪事實
                             </Typography>
                             <Typography className="mb-4" variant="h6">
-                              行政罰法第4、5條
+                            丙○○明知任何人不得騷擾、虐待或傷害動物，竟基於宰殺動物、毀棄損壞之犯意，於民國112年1月4日11時52分許，駕駛車牌號碼：0000-00號自用小客車行經臺中市○○區○○路000巷00號前時，駕駛前開車輛撞擊乙○○○所飼養之犬隻（下稱本案犬隻），致該犬傷重而死亡，因此喪失原有功能而不堪使用，足生損害於乙○○○
                             </Typography>
                             <Typography
                               variant="h5"
                               color="blue-gray"
                               className="mb-2"
                             >
-                              主旨
+                              判決
                             </Typography>
                             <Typography className="mb-4" variant="h6">
-                              關於違反動物保護法第5條第3項規定，裁處行政罰相關疑義乙案，復如說明二、三。
+                            犯動物保護法第25條第1款之違反同法第12條第1項前段規定之不得任意宰殺動物罪及刑法第354條之毀損他人物品罪。被告以一行為同時觸犯上開罪名，為想像競合犯，均應依刑法第55條之規定，從一重論以不得任意宰殺動物罪。
                             </Typography>
                             <Typography
                               variant="h5"
                               color="blue-gray"
                               className="mb-2"
                             >
-                              內容摘要
+                              附件
                             </Typography>
                             <Typography className="mb-4" variant="h6">
                               來函所述104年1月27日補獲之犬隻，飼主經合法通知限期領回仍不領回，似可認其棄養行為於104年1月27日即成立，而非限期領回期滿時；如經認定係飼主於
@@ -357,25 +278,18 @@ export default function Home() {
                               辦理原則
                             </Typography>
                             <Typography className="mb-4" variant="h6">
-                              因修正前之規定有利於受處罰者，揆諸前開說明，自應適用修正前之處罰規定。
-                            </Typography>
-                            <Typography
-                              variant="h5"
-                              color="blue-gray"
-                              className="mb-2"
-                            >
-                              連結或附件
-                            </Typography>
+                            判決書
                             <Link
                               target="_blank"
                               href={
-                                "https://mojlaw.moj.gov.tw/LawContentExShow.aspx?type=e&id=FE282074"
+                                "https://judgment.judicial.gov.tw/FJUD/default.aspx"
                               }
                             >
                               <Typography className="mb-4" variant="h6">
-                                https://mojlaw.moj.gov.tw/LawContentExShow.aspx?type=e&id=FE282074
+                              https://judgment.judicial.gov.tw/FJUD/default.aspx
                               </Typography>
                             </Link>
+                            </Typography>
                           </CardBody>
                         </Card>
                       }
@@ -386,6 +300,14 @@ export default function Home() {
             </SimpleTreeView>
           </Box>
         </div>
+      </div>
+      <div className="flex flex-col items-center mt-10">
+        <Button
+          className="text-lg bg-green-500 text-white py-3 my-3 font-bold hover:bg-blue-600 rounded-lg"
+          onClick={() => router.push("/cases")}
+        >
+          回上頁
+        </Button>
       </div>
     </section>
   );

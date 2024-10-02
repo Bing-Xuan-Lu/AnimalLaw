@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
               </div>
               <div className="flex justify-center">
                 <p className="text-white text-center">
-                  更新日期：2024/09/08 ｜ 總瀏覽人數：9999
+                  更新日期：2024/10/03 ｜ 總瀏覽人數：9999
                 </p>
               </div>
             </div>

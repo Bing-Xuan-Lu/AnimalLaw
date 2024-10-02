@@ -31,14 +31,14 @@ export default function Home() {
 
   const TABLE_ROWS = [
     {
-      id: "一",
+      id: "1",
       year: "107年",
       region: "臺南",
       case: "被告將摻入農藥的魚肉毒餌，放在農地，引誘犬隻食用，致三隻流浪犬誤食而中毒死亡。",
       verdict: "處拘役30天，併科罰 金10萬",
     },
     {
-      id: "二",
+      id: "2",
       year: "106年",
       region: "花蓮",
       case: "被告不滿鄰居飼養的寵物，到她家廚餘桶翻找撿食，將家中弄亂並隨地便溺，在一年內，接續在家中廚餘桶內添加農藥「加保扶」（臺語俗稱：好年冬），致犬隻9 隻及貓1 隻，分別因吃到廚餘桶內含農藥的食物中毒死亡。",
@@ -53,7 +53,10 @@ export default function Home() {
           <thead>
             <tr>
               {TABLE_HEAD.map((head) => (
-                <th key={head} className="border-b border-gray-300 pb-4 pt-10 text-center">
+                <th
+                  key={head}
+                  className="border-b border-gray-300 pb-4 pt-10 text-center"
+                >
                   <Typography
                     variant="small"
                     color="blue-gray"
@@ -117,17 +120,15 @@ export default function Home() {
                         {verdict}
                       </Typography>
                     </td>
-                    <td
-                      className={
-                        classes + " w-10 mx-3"
-                      }
-                    >
-                      <Typography
-                        color="blue-gray"
-                        className="flex justify-center"
-                      >
-                        <BiSolidDetail className="text-3xl font-bold" />
-                      </Typography>
+                    <td className={classes + " w-10 mx-3"}>
+                      <Link href={"/cases/" + id}>
+                        <Typography
+                          color="blue-gray"
+                          className="flex justify-center"
+                        >
+                          <BiSolidDetail className="text-3xl font-bold" />
+                        </Typography>
+                      </Link>
                     </td>
                   </tr>
                 );
